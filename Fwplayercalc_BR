@@ -1,0 +1,142 @@
+"""
+Fwhistle-PlayerCalculator v.0.1
+Calcula o preço real e justo de um jogador no jogo manager de futebol finalwhistle.org
+"""
+
+print('\t=== Player Calculator v0.1 ===')
+print('')
+#Perguntas
+pot = input('Qual o potencial do jogador?\nResposta: ')
+print('')
+pos = input('Selecione a posição do jogador.\n\n1. FW\n2. LW/RW/OM\n3. LM/RM/CM/DM\n4. RWB/LWB/CB\n5. LB/RB\n6. GK\n\nResposta: ')
+print('')
+dev = int(input('Digite a idade de desenvolvimento: '))
+print('')
+idade = int(input('Digite a idade atual do jogador: '))
+print('')
+traits = input('A personalidade do jogador no geral é...\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+print('')
+ambition = input('Possui ambição?\n\n1. Não\n2. Positiva\n3. Negativa\n\nResposta: ')
+print('')
+ritmo = input('Possui ritmo de treino?\n\n1. Não\n2. Positivo\n3. Negativo\n\nResposta: ')
+print('')
+lealdade = input('Possui lealdade?\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+print('')
+
+base = int(pot)*1000*1000
+
+#Bloco desenvolvimento
+if dev < 20:
+    dev = 'e'
+elif dev > 19 and dev < 22:
+    dev = 'm'
+elif dev > 21 and dev < 24:
+    dev = 'l'
+
+#Bloco ambição
+if ambition == '2':
+    ambition = True
+elif ambition == '3':
+    ambition = False
+else:
+    pass
+
+#Bloco ritmo de treino
+if ritmo == '2':
+    ritmo = True
+elif ritmo == '3':
+    ritmo = False
+else:
+    pass
+
+#Bloco lealdade
+if lealdade == '2':
+    lealdade = True
+elif lealdade == '3':
+    lealdade = False
+else:
+    pass
+
+#Bloco potencial
+if pot == '9':
+    valor = base * 3
+elif pot == '8':
+    valor = base * 2
+elif pot == '7':
+    valor = base * 1
+elif pot == '6':
+    valor = base * 0.5
+elif pot == '5':
+    valor = base * 0.05
+elif pot == '4':
+    valor = base * 0.02
+else:
+    valor = 1
+
+#Definir 1%
+percentual = (valor / 100)
+
+if traits == '1': #Tem personalidade neutra
+    traitbonus = 0
+if traits == '2': #Tem personalidade positiva
+    traitbonus = percentual * 4.5
+elif traits == '3': #Tem personalidade negativa
+    traitbonus = -percentual * 4.5
+
+if ambition == True: #Se ambição positiva
+    traitbonus = traitbonus + percentual*5
+elif ambition == False: #Se ambição negativa
+    traitbonus = traitbonus +(-percentual*5)
+
+if ritmo == True: #Se ritmo de treino positivo
+    traitbonus = traitbonus + percentual*2.5
+elif ritmo == False: #Se ritmo de treino negativo
+    traitbonus = traitbonus + (-percentual*2.5)
+
+if lealdade == True: #Se lealdade positiva
+    traitbonus = traitbonus + percentual*3.5
+elif lealdade == False: #Se lealdade negativa
+    traitbonus = traitbonus + (-percentual*3.5)
+
+if dev == 'e':
+    devbonus = percentual * 4
+elif dev == 'm':
+    devbonus = 0
+elif dev == 'l':
+    devbonus = -percentual * 4
+
+#Bloco de posição
+if pos == '1':
+    posbonus = percentual * 12
+elif pos == '2':
+    posbonus = percentual * 8
+elif pos == '3':
+    posbonus = percentual * 0
+elif pos == '4':
+    posbonus = percentual * 5
+elif pos == '5':
+    posbonus = -percentual * 5
+elif pos == '6':
+    posbonus = percentual * 10
+
+#Definir o preço
+valorprovisorio = valor + traitbonus + devbonus + posbonus
+if idade <17:
+    valorfinal = valorprovisorio*0.9
+elif idade > 16 and idade <20:
+    valorfinal = valorprovisorio
+elif idade > 19 and idade <22:
+    valorfinal = valorprovisorio*1.2
+elif idade > 21 and idade < 24:
+    valorfinal = valorprovisorio*1.3
+elif idade >23 and idade < 28:
+    valorfinal = valorprovisorio*1.5
+elif idade > 27 and idade < 30:
+    valorfinal = valorprovisorio*0.9
+elif idade > 29 and idade < 32:
+    valorfinal = valorprovisorio*0.8
+elif idade > 31:
+    valorfinal = valorprovisorio*0.65
+
+
+print(f'Seu jogador vale ${int(valorfinal)}')
