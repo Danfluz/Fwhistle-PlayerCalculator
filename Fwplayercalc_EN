@@ -1,5 +1,6 @@
-"""Player Calculator v.0.1"""
-
+"""Player Calculator v.0.2"""
+print('\t=== Player Calculator v0.2 ===')
+print('')
 #Perguntas
 while True:
     pot = input('Enter player potential: ')
@@ -118,13 +119,13 @@ else:
 if pot == '9':
     valor = base * 3
 elif pot == '8':
-    valor = base * 2
+    valor = base * 2.1 # Anteriormente era 2
 elif pot == '7':
     valor = base * 1
 elif pot == '6':
     valor = base * 0.5
 elif pot == '5':
-    valor = base * 0.05
+    valor = base * 0.03 # Anteriormente era 0.05
 elif pot == '4':
     valor = base * 0.02
 else:
