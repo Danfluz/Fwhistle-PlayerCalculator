@@ -1,26 +1,84 @@
-"""
-Fwhistle-PlayerCalculator v.0.1
-Calcula o preço real e justo de um jogador no jogo manager de futebol finalwhistle.org
-"""
-
-print('\t=== Player Calculator v0.1 ===')
+"""Player Calculator v.0.2"""
+print('\t=== Player Calculator v0.2 ===')
 print('')
 #Perguntas
-pot = input('Qual o potencial do jogador?\nResposta: ')
+while True:
+    pot = input('Qual o potencial do jogador?\nResposta: ')
+    pot = pot.strip(' ')
+    if len(pot) > 1 or not pot.isnumeric() or int(pot) > 9 or int(pot) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 9')
+        print('')
+    else:
+        break
 print('')
-pos = input('Selecione a posição do jogador.\n\n1. FW\n2. LW/RW/OM\n3. LM/RM/CM/DM\n4. RWB/LWB/CB\n5. LB/RB\n6. GK\n\nResposta: ')
+while True:
+    pos = input('Selecione a posição do jogador.\n\n1. FW\n2. LW/RW/OM\n3. LM/RM/CM/DM\n4. RWB/LWB/CB\n5. LB/RB\n6. GK\n\nResposta: ')
+    pos = pos.strip(' ')
+    if len(pos) > 1 or not pos.isnumeric() or int(pos) > 6 or int(pos) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 6')
+    else:
+        break
 print('')
-dev = int(input('Digite a idade de desenvolvimento: '))
+while True:
+    dev = input('Digite a idade de desenvolvimento: ')
+    dev = dev.strip(' ')
+    if len(dev) != 2 or not dev.isnumeric() or int(dev) > 23 or int(dev) < 18:
+        print('ERRO: Por favor responda com um número entre 18 e 23')
+        print('')
+    else:
+        dev = int(dev)
+        break
 print('')
-idade = int(input('Digite a idade atual do jogador: '))
+while True:
+    idade = input('Digite a idade atual do jogador: ')
+    idade = idade.strip('y')
+    idade = idade.strip(' ')
+    if len(idade) != 2 or not idade.isnumeric() or int(idade) < 14:
+        print('ERRO: Por favor responda com um número 2 dígitos maior que 14. (exemplo: 18)')
+        print('')
+    else:
+        idade = int(idade)
+        break
 print('')
-traits = input('A personalidade do jogador no geral é...\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+while True:
+    traits = input('A personalidade do jogador no geral é...\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+    traits = traits.strip(' ')
+    traits = traits.strip('.')
+    if len(traits) != 1 or not traits.isnumeric() or int(traits) > 3 or int(traits) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 3')
+        print('')
+    else:
+        break
 print('')
-ambition = input('Possui ambição?\n\n1. Não\n2. Positiva\n3. Negativa\n\nResposta: ')
+while True:
+    ambition = input('Possui ambição?\n\n1. Não\n2. Positiva\n3. Negativa\n\nResposta: ')
+    ambition = ambition.strip(' ')
+    ambition = ambition.strip('.')
+    if len(ambition) != 1 or not ambition.isnumeric() or int(ambition) > 3 or int(ambition) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 3')
+        print('')
+    else:
+        break
 print('')
-ritmo = input('Possui ritmo de treino?\n\n1. Não\n2. Positivo\n3. Negativo\n\nResposta: ')
+while True:
+    ritmo = input('Possui ritmo de treino?\n\n1. Não\n2. Positivo\n3. Negativo\n\nResposta: ')
+    ritmo = ritmo.strip(' ')
+    ritmo = ritmo.strip('.')
+    if len(ritmo) != 1 or not ritmo.isnumeric() or int(ritmo) > 3 or int(ritmo) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 3')
+        print('')
+    else:
+        break
 print('')
-lealdade = input('Possui lealdade?\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+while True:
+    lealdade = input('Possui lealdade?\n\n1. Neutra\n2. Positiva\n3. Negativa\n\nResposta: ')
+    lealdade = lealdade.strip(' ')
+    lealdade = lealdade.strip('.')
+    if len(lealdade) != 1 or not lealdade.isnumeric() or int(lealdade) > 3 or int(lealdade) < 1:
+        print('ERRO: Por favor responda com um número entre 1 e 3')
+        print('')
+    else:
+        break
 print('')
 
 base = int(pot)*1000*1000
@@ -61,13 +119,13 @@ else:
 if pot == '9':
     valor = base * 3
 elif pot == '8':
-    valor = base * 2
+    valor = base * 2.1 # Anteriormente era 2
 elif pot == '7':
     valor = base * 1
 elif pot == '6':
     valor = base * 0.5
 elif pot == '5':
-    valor = base * 0.05
+    valor = base * 0.03 # Anteriormente era 0.05
 elif pot == '4':
     valor = base * 0.02
 else:
@@ -82,6 +140,8 @@ if traits == '2': #Tem personalidade positiva
     traitbonus = percentual * 4.5
 elif traits == '3': #Tem personalidade negativa
     traitbonus = -percentual * 4.5
+else:
+    traitbonus = 0
 
 if ambition == True: #Se ambição positiva
     traitbonus = traitbonus + percentual*5
@@ -138,5 +198,7 @@ elif idade > 29 and idade < 32:
 elif idade > 31:
     valorfinal = valorprovisorio*0.65
 
-
-print(f'Seu jogador vale ${int(valorfinal)}')
+try:
+    print(f'Este jogador tem o valor aproximado de ${int(valorfinal)}')
+except:
+    print(f'Este jogador tem o valor aproximado de ${valorfinal}')
