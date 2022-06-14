@@ -17,6 +17,6 @@ This doesn't take player's current or future skills into account.
 
 # Como usar / How to use:
 
-BR: Simplesmente responda as perguntas usando os números correspondentes para cada resposta. Veja a seção de releases para acessar ou baixar.
+BR: Simplesmente responda as perguntas usando os números correspondentes para cada resposta. Veja a [seção de releases](https://github.com/Danfluz/Fwhistle-PlayerCalculator/releases) para acessar ou baixar.
 
-EN: Simply answer the questions using the apropriate number for each question. See releases section to try online or download.
+EN: Simply answer the questions using the apropriate number for each question. See [releases section](https://github.com/Danfluz/Fwhistle-PlayerCalculator/releases) to try online or download.
